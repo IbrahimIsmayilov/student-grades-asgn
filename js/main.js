@@ -51,50 +51,71 @@ function mainMenu() {
 function firstTo40() {
   // Set the grade of the first student to 40.
   outputEl.innerHTML = "First grade to 40";
-  grades.splice(0, 1, 40);
+  grades[0] = 40;
 }
 
 function lastTo50() {
   // Set the grade of the last student to 50.
   outputEl.innerHTML = "Last grade to 50";
-  grades.splice(5, 1, 50);
+  grades[grades.length - 1] = 50;
 }
 
 function randomTo100() {
   // Set the grade of a random student to 100.
   outputEl.innerHTML = "Random grade to 100";
-  randomNum = randomInt(0, grades.length);
-  grades.splice(randNum, 1, 100);
+  randNum = randomInt(0, grades.length);
+  grades[randNum] = 100;
 }
 
 function addRandomGrade() {
   // Add a random grade between 0 and 100 to the end of the array.
   outputEl.innerHTML = "Add random grade";
+  randNum = Math.random() * 100;
+  grades.push(randNum);
 }
 
 function removeLastGrade() {
   // Remove the last grade.
   outputEl.innerHTML = "Remove the last grade";
+  grades.pop();
 }
 
 function countBelow50() {
   // Count how many grades are below 50.  Output the result.
   outputEl.innerHTML = "Count grades below 50";
+  let count = 0;
+  for (let i = 0; i < grades.length; i++) {
+    if (grades[i] < 50) {
+      count++;
+    }
+  }
+  outputEl.innerHTML = count;
 }
 
 function lowGradesTo50() {
   // Change all grades that are below 50 to be equal to 50.
-  outputEl.innerHTML = "Change low grades to 50";
+  for (let i = 0; i < grades.length; i++) {
+    if (grades[i] < 50) {
+      grades[i] = 50;
+    }
+  }
 }
 
 function increaseGradesBy10() {
   // Increase each grade by 10%.
   outputEl.innerHTML = "Increase all grades by 10%";
+  for (let i = 0; i < grades.length; i++) {
+    grades[i] += 10;
+  }
+  // Doesn'work
 }
 
 function decreaseGradesBy10() {
   // Decrease each grade by 10%.
   outputEl.innerHTML = "Decrease all grades by 10%";
+  for (let i = 0; i < grades.length; i++) {
+    grades[i] -= 10;
+  }
 }
 
 // Function to draw current state of grades array
